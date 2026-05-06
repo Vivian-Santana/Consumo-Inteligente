@@ -51,7 +51,7 @@ export const atualizarGasto = async (
   gasto: Partial<Gasto>,
 ): Promise<Gasto> => {
   const res = await fetch(`${BASE_URL}/gastos/${id}`, {
-    method: "PATCH", //PUT: normalmente espera o objeto completo ... PATCH: atualizações parciais
+    method: "PUT", //PUT: normalmente espera o objeto completo ... PATCH: atualizações parciais
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(gasto),
   });
