@@ -2,8 +2,13 @@ import { useState } from "react";
 import { categorias } from "../constantes/categorias";
 import { criarGasto } from "../service/consumo";
 
+interface FormGastoProps {
+  onGastoCriado: () => Promise<void>;
+}
 
-export function FormGasto() {
+export function FormGasto({
+  onGastoCriado
+}: FormGastoProps) {
 
   const [descricao, setDescricao] = useState<string>("");
   const [valor, setValor] = useState<number>(0);
@@ -23,8 +28,10 @@ export function FormGasto() {
     try {
       await criarGasto(novoGasto); // chama o POST
 
+      await criarGasto(novoGasto);
+      await onGastoCriado();
       console.log("Gasto criado com sucesso");
-
+      
       // limpa o form
       setDescricao("");
       setValor(0);

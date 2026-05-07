@@ -1,35 +1,42 @@
-import { useEffect, useState, useCallback } from "react";
-import { getGastos, deletarGasto, atualizarGasto } from "../service/consumo";
+import {deletarGasto, atualizarGasto } from "../service/consumo";
 import type { Gasto } from "../tipos/tipos";
 import { Trash2, Edit } from "lucide-react";
 
-export function ListaGastos() {
-  const [gastos, setGastos] = useState<Gasto[]>([]);
+interface ListaGastosProps {
+  gastos: Gasto[];
+  carregarDados: () => Promise<void>; // não tem q retornar um gasto?
+}
 
-  // função.
+export function ListaGastos({gastos,
+  carregarDados
+}: ListaGastosProps) {
+  //const [gastos, setGastos] = useState<Gasto[]>([]);
 
-  const carregarDados = useCallback(async () => {
-    try {
-      const dados = await getGastos();
-      setGastos(dados);
-    } catch (err) {
-      console.error("Erro ao buscar gastos:", err);
-    }
-  }, []); // Sem dependências para ser criada apenas uma vez
+  //função
 
-  // 2. Para evitar o erro usa assíncrona limpa
-  useEffect(() => {
-    let montado = true;
+  // const carregarDados = useCallback(async () => {
+  //   try {
+  //     const dados = await getGastos();
+  //     setGastos(dados);
+  //   } catch (err) {
+  //     console.error("Erro ao buscar gastos:", err);
+  //   }
+  // }, []); // Sem dependências para ser criada apenas uma vez
 
-    if (montado) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      carregarDados();
-    }
+  //2. Para evitar o erro usa assíncrona limpa
+  // useEffect(() => {
+  //   let montado = true;
 
-    return () => {
-      montado = false;
-    };
-  }, [carregarDados]);
+  //   if (montado) {
+  //     // eslint-disable-next-line react-hooks/set-state-in-effect
+  //     carregarDados();
+  //   }
+
+  //   return () => {
+  //     montado = false;
+  //   };
+  // }, [carregarDados]);
+
 
   const handleDelete = async (id: string) => {
     if (window.confirm("Deseja apagar este gasto?")) {
@@ -42,12 +49,17 @@ export function ListaGastos() {
     }
   };
 
+  //Atualiza o valor do gasto selecionado
   const handleEdit = async (id: string) => {
     const novoValor = window.prompt("Digite o novo valor:");
+    //console.log(id); //id do gasto
+    
     if (novoValor && !isNaN(Number(novoValor))) {
       try {
         await atualizarGasto(id, { valor: Number(novoValor) });
+        //console.log(novoValor);
         await carregarDados();
+        alert("Gasto atualizado com sucesso!")
       } catch (err) {
         console.error("Erro ao editar:", err);
       }
