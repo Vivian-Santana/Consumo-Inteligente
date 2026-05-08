@@ -29,7 +29,7 @@ export function FormGasto() {
       // Limpa o formulário
       setDescricao("");
       setValor(0);
-      setCategoria("1");
+      setCategoria("");
 
       window.location.reload();
     } catch (error) {
@@ -39,8 +39,7 @@ export function FormGasto() {
 
   return (
     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-      
-    {/* DESCRIÇÃO */}
+      {/* DESCRIÇÃO */}
       <input
         className="bg-white text-black p-2 rounded border border-gray-300 w-full"
         placeholder="Descrição (ex: Aluguel)"
@@ -48,8 +47,8 @@ export function FormGasto() {
         onChange={(e) => setDescricao(e.target.value)}
       />
 
-    {/* LINHA 2 */}
-    <div className="flex gap-2">
+      {/* LINHA 2 */}
+      <div className="flex gap-2">
         <input
           type="number"
           className="bg-white text-black p-2 rounded border border-gray-300 w-1/2"
@@ -59,26 +58,19 @@ export function FormGasto() {
         />
 
         <select
-          className={ `
+          className={`
               bg-white text-black p-2 rounded border border-gray-300 w-1/2 
               ${categoria === "" ? "text-gray-400" : "text-black"}
             `}
           value={categoria}
           onChange={(e) => setCategoria(e.target.value)}
         >
-
-          <option
-            value=""
-            disabled
-            hidden
-          >
+          <option value="" disabled hidden>
             Selecione uma categoria
           </option>
 
           {categorias.map((cat) => (
-            <option 
-              key={cat.id} 
-              value={cat.id}>
+            <option key={cat.id} value={cat.id}>
               {cat.descricao}
             </option>
           ))}

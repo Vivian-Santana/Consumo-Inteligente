@@ -25,39 +25,39 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="p-6 rounded-2xl border border-slate-700 bg-slate-800/20 shadow-sm">
             <h2 className="text-lg font-semibold mb-4 text-pink-400 flex items-center gap-2">
-              <BanknoteArrowDown size= {20}/> Cadastrar Renda
+              <BanknoteArrowDown size={20} /> Cadastrar Renda
             </h2>
-            
+
             <FormRendimentos />
           </div>
 
-          <div className="border border-green-500 p-6 rounded-2xl border border-slate-700 bg-slate-800/20 shadow-sm">
+          <div className=" border-color: var(--color-green-500)  p-6 rounded-2xl border border-slate-700 bg-slate-800/20 shadow-sm">
             <h2 className="text-lg font-semibold mb-4 text-blue-400 flex items-center gap-2">
-              <BanknoteArrowUp size={20}/> Novo Gasto
+              <BanknoteArrowUp size={20} /> Novo Gasto
             </h2>
-            <FormGasto/>
+            <FormGasto />
           </div>
         </div>
 
         {/* Gráfico e Insights */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl border border-slate-700 bg-slate-900/40 shadow-inner flex flex-col items-center justify-center">
+          <div className="p-6 rounded-2xl border border-slate-700 bg-slate-800/20 shadow-inner flex flex-col items-center justify-center">
             <GraficoConsumo />
           </div>
 
-          <div className="p-6 rounded-2xl border border-slate-700 bg-slate-900/40 shadow-inner">
+          <div className="p-6 rounded-2xl border border-slate-700 bg-slate-800/20 shadow-inner">
             <Insights />
           </div>
         </div>
-          
+
         {/* container que abriga as colunas de rendimentos e gastos*/}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="lg:col-span-1 p-6 rounded-2xl border border-slate-700 bg-slate-900/40 shadow-inner">
-          <ListaRendimentos/>
+          <div className="lg:col-span-1 p-6 rounded-2xl border border-slate-700 bg-slate-800/20 shadow-inner">
+            <ListaRendimentos />
           </div>
-          
-           {/* Primeira coluna - Lista de gastos */}
-          <div className="lg:col-span-1 p-6 rounded-2xl border border-slate-700 bg-slate-900/40 shadow-inner">
+
+          {/* Primeira coluna - Lista de gastos */}
+          <div className="lg:col-span-1 p-6 rounded-2xl border border-slate-700 bg-slate-800/20 shadow-inner">
             <ListaGastos />
           </div>
         </div>
