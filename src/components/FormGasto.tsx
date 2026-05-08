@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState} from "react";
 import { categorias } from "../constantes/categorias";
 import { criarGasto } from "../service/consumo";
 
@@ -14,7 +14,7 @@ export function FormGasto({
   const [valor, setValor] = useState<number>(0);
   const [categoria, setCategoria] = useState<string>("1");
 
-  const handleSubmit = async (e: React.ChangeEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
       console.log("clicou submit");
 
@@ -26,11 +26,9 @@ export function FormGasto({
     };
     
     try {
-      await criarGasto(novoGasto); // chama o POST
-
-      await criarGasto(novoGasto);
+      await criarGasto(novoGasto); //chama o POST
       await onGastoCriado();
-      console.log("Gasto criado com sucesso");
+      alert("Gasto adicionado com sucesso!")
       
       // limpa o form
       setDescricao("");
@@ -39,6 +37,7 @@ export function FormGasto({
 
     } catch (error) {
       console.error("Erro ao criar gasto", error);
+      alert("Erro ao adicionar gasto!")
     }
   };
 

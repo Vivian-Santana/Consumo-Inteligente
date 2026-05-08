@@ -6,21 +6,12 @@ import LoginPage from "./views/LoginPage";
 function App() {
   return (
     <BrowserRouter>
-
       <Routes>
-
-        <Route
-          path="/"
-          element={<LoginPage />}
-        />
-
-        <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
-
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/components/FormGasto" element={<FormGasto />} />
+        <Route path="/components/FormRendimentos" element={<FormRendimentos />} /> */}
       </Routes>
-
     </BrowserRouter>
   );
 }

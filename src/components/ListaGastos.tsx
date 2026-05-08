@@ -10,33 +10,6 @@ interface ListaGastosProps {
 export function ListaGastos({gastos,
   carregarDados
 }: ListaGastosProps) {
-  //const [gastos, setGastos] = useState<Gasto[]>([]);
-
-  //função
-
-  // const carregarDados = useCallback(async () => {
-  //   try {
-  //     const dados = await getGastos();
-  //     setGastos(dados);
-  //   } catch (err) {
-  //     console.error("Erro ao buscar gastos:", err);
-  //   }
-  // }, []); // Sem dependências para ser criada apenas uma vez
-
-  //2. Para evitar o erro usa assíncrona limpa
-  // useEffect(() => {
-  //   let montado = true;
-
-  //   if (montado) {
-  //     // eslint-disable-next-line react-hooks/set-state-in-effect
-  //     carregarDados();
-  //   }
-
-  //   return () => {
-  //     montado = false;
-  //   };
-  // }, [carregarDados]);
-
 
   const handleDelete = async (id: string) => {
     if (window.confirm("Deseja apagar este gasto?")) {

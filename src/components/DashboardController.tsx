@@ -7,30 +7,24 @@ import { FormGasto } from "./FormGasto";
 import { ListaGastos } from "./ListaGastos";
 
 
-export default function Dashboard() {
+export default function DashboardController() {
     const [gastos, setGastos] = useState<Gasto[]>([]);
 
+    //função para atualizar estado
   const carregarDados = useCallback(async () => {
     try {
       const dados = await getGastos();
       setGastos(dados);
     } catch (err) {
       console.error("Erro ao buscar gastos:", err);
+      alert("Erro ao buscar gastos:");
     }
-  }, []); // Sem dependências para ser criada apenas uma vez
+  }, []); //Memoriza a função para evitar recriações desnecessárias
 
   //2. Para evitar o erro usa assíncrona limpa
   useEffect(() => {
-    let montado = true;
-
-    if (montado) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       carregarDados();
-    }
-
-    return () => {
-      montado = false;
-    };
   }, [carregarDados]);
 
   return (

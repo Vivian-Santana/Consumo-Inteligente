@@ -5,6 +5,7 @@ import { Insights } from "../components/Insights";
 import { ListaGastos } from "../components/ListaGastos";
 import { FormGasto } from "../components/FormGasto";
 import { FormRendimentos } from "../components/FormRendimentos";
+import DashboardController from "../components/DashboardController";
 
 export default function Dashboard() {
   return (
@@ -30,18 +31,19 @@ export default function Dashboard() {
               <FormRendimentos />
             </div>
 
-            <div className="p-6 rounded-2xl border border-slate-700 bg-slate-800/20">
+            {/* <div className="p-6 rounded-2xl border border-slate-700 bg-slate-800/20">
               <h2 className="text-lg font-semibold mb-2 text-blue-400">
                 💸 Novo Gasto
               </h2>
               <FormGasto />
-            </div>
+            </div> */}
           </div>
 
           {/* LISTAGEM DE GASTOS */}
           <div className="lg:col-span-1 space-y-6">
             <div className="p-6 rounded-2xl border border-slate-700 bg-slate-900/40 min-h-100">
-              <ListaGastos />
+              {/* <ListaGastos /> */}
+              <DashboardController />
             </div>
           </div>
 
